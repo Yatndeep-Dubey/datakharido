@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <!--Tailwind Link-->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- jquerry link  -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+</head>
+<body>
+
+    <div class="bg-[#87CEEB] h-[6rem] flex justify-between items-center px-5">
+        <p class="text-2xl font-bold">Datakharido</p>
+        <div class="flex items-center space-x-5">
+            <img src="../public/images/logINIcon.png" alt="">
+            <p class="text-2xl font-bold">Admin</p>
+        </div>
+    </div>
+
+    <div>
+        <div>
+            <form class="flex flex-col space-y-5 w-[70%] mx-auto my-24 border-2 border-gray-400 shadow-2xl p-2" method="post" action="/adminLogin" id="myForm">
+                <label>Admin ID</label>
+                <input type="text" name="admin_id" id="adminID" class="border-2 p-2 border-gray-400">
+                <label>Password</label>
+                <input type="password" name="admin_password" id="password" class="border-2 p-2 border-gray-400">
+                <button type="submit" class="text-xl p-2 bg-blue-400" id="myButton">Login</button>
+            </form>
+        </div>
+    </div>
+
+</body>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+<script>
+$('#myForm').submit(function (event) {
+    event.preventDefault(); // Prevent the default form submission
+    // Serialize the form data
+    const formData = $(this).serialize();
+    // Send an AJAX request to the server
+    $.ajax({
+      type: 'POST',
+      url: '/adminLogin',
+      data: formData,
+      success: function (response) {
+        // Display the success message
+        $('#myForm')[0].reset();
+        $('#myButton').trigger('click');
+         window.location.href = "/admin_page";
+        // Optionally, reset the form
+
+      },
+      error: function (error) {
+          Swal.fire(error.responseText)
+      },
+    });
+  });
+</script>
+</html>

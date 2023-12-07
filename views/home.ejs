@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <!--Tailwind Link-->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- jquerry link  -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
+    <style>
+        .custom-div {
+            margin: 10px;
+            padding-left: 2.5rem;
+            padding-right: 2.5rem;
+
+            border-radius: 5px;
+        }
+
+        input[type=text],
+        input[type=password] {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+
+        button:hover {
+            opacity: 0.8;
+        }
+
+
+        .cancelbtn {
+            width: auto;
+            padding: 10px 18px;
+            background-color: #f44336;
+        }
+
+        .imgcontainer {
+            text-align: center;
+            margin: 24px 0 12px 0;
+            position: relative;
+        }
+
+        img.avatar {
+            width: 40%;
+            border-radius: 50%;
+        }
+
+        .container {
+            padding: 16px;
+        }
+
+        span.psw {
+            float: right;
+            padding-top: 16px;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0, 0, 0);
+            background-color: rgba(0, 0, 0, 0.4);
+
+            padding-top: 60px;
+        }
+
+        /* Modal Content/Box */
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto 15% auto;
+            border: 1px solid #888;
+            width: 80%;
+        }
+
+
+        .close {
+            position: absolute;
+            right: 25px;
+            top: 0;
+            color: #000;
+            font-size: 35px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: red;
+            cursor: pointer;
+        }
+
+        /* Add Zoom Animation */
+        .animate {
+            -webkit-animation: animatezoom 0.6s;
+            animation: animatezoom 0.6s
+        }
+
+        @-webkit-keyframes animatezoom {
+            from {
+                -webkit-transform: scale(0)
+            }
+
+            to {
+                -webkit-transform: scale(1)
+            }
+        }
+
+        @keyframes animatezoom {
+            from {
+                transform: scale(0)
+            }
+
+            to {
+                transform: scale(1)
+            }
+        }
+
+        
+        @media screen and (max-width: 300px) {
+            span.psw {
+                display: block;
+                float: none;
+            }
+
+            .cancelbtn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-gray-100">
+
+
+    <!-- navbar -->
+
+    <div class="bg-[#87CEEB] h-[6rem] flex items-center justify-between px-[3rem] ">
+        <div class="text-4xl font-extrabold ">DataKharido</div>
+        <div class="flex items-center gap-4 ">
+            
+            <div id="user_login">
+            
+           </div>
+
+            <!-- login modal  -->
+            <div id="id01" class="modal">
+
+                <form class="modal-content animate rounded-lg" action="#" method="post">
+                    <div class="imgcontainer">
+                        <span onclick="document.getElementById('id01').style.display='none'" class="close"
+                            title="Close Modal">&times;</span>
+                        <img src="../public/images/logINIcon.png" alt="Avatar" class="">
+                    </div>
+
+                    <div class="container">
+                        <label for="uname"><b>Username</b></label>
+                        <input type="text" placeholder="Enter Username" name="uname" required>
+
+                        <label for="psw"><b>Password</b></label>
+                        <input type="password" placeholder="Enter Password" name="psw" required>
+
+                        <button class="bg-green-400 h-[3rem] w-[4rem] rounded-lg mt-4 font-semibold text-[#fff]" type="submit">Login</button>
+                        
+                    </div>
+
+                    
+                </form>
+            </div>
+            <!-- login modal  -->
+
+        </div>
+    </div>
+
+    <!-- navbar -->
+
+    <!-- header  -->
+
+
+    <div class='flex justify-between mt-4 px-[3rem] '>
+        <p class=" flex text-lg font-bold items-center">Leads will be Updated on Every Monday at 10:00:00 AM </p>
+        <div class="" id="paybutton"> <button 
+                class="items-center bg-green-500 w-[12rem] h-[3rem] rounded-xl text-[#fff] font-semibold cursor-pointer"> Purchase
+                Minimum (10) <br /> Pay ₹<span id="paycard">00</span> </button> </div>
+         </div>
+
+    <!-- header  -->
+
+    <!-- main Section -->
+
+    <div class="grid grid-cols-12 items-center px-[3rem] mt-[2rem] font-semibold">
+    
+        <div class="col-span-2 text-center">Name</div>
+        <div class="col-span-2 text-center">Email</div>
+        <div class="col-span-1 text-center">Phone</div>
+        <div class="col-span-3 text-center">Requirement</div>
+        <div class="col-span-2 text-end pr-6">Purchase</div>
+    </div>
+
+    <% data.forEach(function(element,index) { %>
+        <div class='grid grid-cols-12 items-center  solid bg-white rounded-xl h-[5rem] ' >
+            <div class ="col-span-2 ml-[3rem]"> 
+            <label class='flex gap-3'>
+                <input
+                  type="checkbox"
+                  class="checkbox"
+                  value="<%=element._id%>"
+                />
+                <%=index%>
+              </label>   
+            </div>
+            <div class="col-span-2 text-center"><%=element.name%></div>
+            <div class="col-span-2 text-center"><%=element.email%></div>
+            <div class="col-span-1 text-center"><%=element.phone_number%></div>
+            <div class="col-span-3 text-center"><%=element.requirements%></div>
+            <div class="col-span-2 text-end pr-2">
+              <button type='button'  class=' bg-green-400 w-[7rem] h-[3rem] rounded-xl text-[#fff] font-semibold hover:shadow-lg '>20</button>
+            </div>
+        </div>
+        <% }); %>
+    
+ <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script type="text/javascript">
+
+        // Get the modal
+        
+       
+    
+
+        let checkedItems = [];
+
+        // Check each checkbox
+        
+
+        
+        $('.checkbox').on('change', function () {
+            if (this.checked) {
+                checkedItems.push($(this).val());
+            } else {
+                checkedItems = checkedItems.filter((item) => item !== $(this).val());
+            }
+
+            document.getElementById("paycard").innerHTML = checkedItems.length * 20;
+        })
+    
+
+
+        
+        const user_email = decodeURIComponent(document.cookie.split('; ').find(row => row.startsWith('user_email=')))
+        if (user_email !== 'undefined') {
+            const new_user = decodeURIComponent(user_email.split('=')[1]);
+            document.getElementById('user_login').innerHTML=`<a href="/MyLeads/${new_user}">
+                <div class="">
+                    <button type="button"
+                        class="items-center bg-green-500 w-[11rem] h-[3rem] rounded-xl text-[#fff] font-semibold ">
+                        My Leads
+                    </button>
+                </div>
+            </a>`
+      document.getElementById("paybutton").addEventListener('click',()=>
+        {
+            const purchased_payment = document.getElementById("paycard").innerHTML;
+            if(purchased_payment < 200)
+            {
+                 Swal.fire({title:'Oops...',text:'Minimum Purchase is 200'})   
+            }
+            else
+            {
+                $.ajax({
+                type: 'POST',
+                url: '/purchase_data',
+                contentType: 'application/json',
+                data: JSON.stringify({ email:new_user,data: checkedItems }),
+                success: function (response) 
+                {
+                   window.location.href='/myLeads/'+new_user
+                },
+                error: function (error) 
+                {
+                   Swal.fire(error.responseText)
+                }
+            });
+            } 
+        })
+       
+
+
+
+        }
+        else
+        {
+            document.getElementById("paybutton").addEventListener('click',()=>{
+                Swal.fire({icons:'error',title:'Oops...',text:'Please Login First'})
+            })
+            document.getElementById('user_login').innerHTML=`<a href="/auth/google" class="flex ">
+            <img src="../public/images/logINIcon.png" alt="">
+            <button
+                class="text-md font-bold cursor-pointer ">Login</button>
+            </a>`
+        }
+        </script>
+</body>
+
+</html>
